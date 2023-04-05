@@ -25,6 +25,7 @@ class Form extends React.Component {
             data-testid="name-input"
             type="text"
             id="name"
+            name="cardName"
             onChange={ onInputChange }
             value={ cardName }
           />
@@ -34,6 +35,7 @@ class Form extends React.Component {
           <textarea
             data-testid="description-input"
             id="textarea"
+            name="cardDescription"
             onChange={ onInputChange }
             value={ cardDescription }
           />
@@ -44,6 +46,7 @@ class Form extends React.Component {
             data-testid="attr1-input"
             type="number"
             id="number1"
+            name="cardAttr1"
             onChange={ onInputChange }
             value={ cardAttr1 }
           />
@@ -54,6 +57,7 @@ class Form extends React.Component {
             data-testid="attr2-input"
             type="number"
             id="number2"
+            name="cardAttr2"
             onChange={ onInputChange }
             value={ cardAttr2 }
           />
@@ -64,6 +68,7 @@ class Form extends React.Component {
             data-testid="attr3-input"
             type="number"
             id="number3"
+            name="cardAttr3"
             onChange={ onInputChange }
             value={ cardAttr3 }
           />
@@ -74,6 +79,7 @@ class Form extends React.Component {
             data-testid="image-input"
             type="text"
             id="image"
+            name="cardImage"
             onChange={ onInputChange }
             value={ cardImage }
           />
@@ -82,8 +88,8 @@ class Form extends React.Component {
           Raridade
           <select
             data-testid="rare-input"
-            name="select"
             id="select"
+            name="cardRare"
             onChange={ onInputChange }
             value={ cardRare }
           >
@@ -96,6 +102,7 @@ class Form extends React.Component {
           <input
             type="checkbox"
             id="check"
+            name="cardTrunfo"
             data-testid="trunfo-input"
             onChange={ onInputChange }
             checked={ cardTrunfo }
