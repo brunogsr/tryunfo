@@ -1,5 +1,6 @@
 import React from 'react';
-import Form from '../src/components/Form'
+import Form from './components/Form';
+
 class App extends React.Component {
   render() {
     return (
