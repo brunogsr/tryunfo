@@ -10,20 +10,53 @@ class App extends React.Component {
     cardAttr2: '',
     cardAttr3: '',
     cardImage: '',
-    cardRare: '',
+    cardRare: 'normal',
     cardTrunfo: false,
     // hasTrunfo: '',
-    isSaveButtonDisabled: false,
+    isSaveButtonDisabled: true,
+  };
+
+  validationFields = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+    } = this.state;
+    const nameCheck = cardName !== '';
+    const descriptionCheck = cardDescription !== '';
+    const imageCheck = cardImage !== '';
+    const rarityCheck = cardRare !== '';
+    const maxNum = 90;
+    const minNum = 0;
+    const maxTotal = 210;
+    const valAttr1 = Number(cardAttr1) >= minNum && Number(cardAttr1) <= maxNum;
+    const valAttr2 = Number(cardAttr2) >= minNum && Number(cardAttr2) <= maxNum;
+    const valAttr3 = Number(cardAttr3) >= minNum && Number(cardAttr3) <= maxNum;
+    const TotalAttr = (Number(cardAttr1)) + (Number(cardAttr2)) + (Number(cardAttr3));
+    const valTotalAttr = TotalAttr <= maxTotal;
+    const valSaveButton = nameCheck
+    && descriptionCheck
+    && imageCheck
+    && rarityCheck
+    && valAttr1
+    && valAttr2
+    && valAttr3
+    && valTotalAttr;
+    this.setState({
+      isSaveButtonDisabled: !valSaveButton,
+    });
   };
 
   onInputChange = (event) => {
     const { target } = event;
-    // console.log(event.target);
     const { value, name } = target;
-    // console.log(name);
     this.setState({
       [name]: value,
-    });
+    }, this.validationFields);
   };
 
   render() {
@@ -54,7 +87,7 @@ class App extends React.Component {
           // hasTrunfo={}
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
-        // onSaveButtonClick={}
+          // onSaveButtonClick={ onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
