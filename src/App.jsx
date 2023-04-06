@@ -14,6 +14,7 @@ class App extends React.Component {
     cardTrunfo: false,
     // hasTrunfo: '',
     isSaveButtonDisabled: true,
+    deck: [],
   };
 
   validationFields = () => {
@@ -39,13 +40,13 @@ class App extends React.Component {
     const TotalAttr = (Number(cardAttr1)) + (Number(cardAttr2)) + (Number(cardAttr3));
     const valTotalAttr = TotalAttr <= maxTotal;
     const valSaveButton = nameCheck
-    && descriptionCheck
-    && imageCheck
-    && rarityCheck
-    && valAttr1
-    && valAttr2
-    && valAttr3
-    && valTotalAttr;
+      && descriptionCheck
+      && imageCheck
+      && rarityCheck
+      && valAttr1
+      && valAttr2
+      && valAttr3
+      && valTotalAttr;
     this.setState({
       isSaveButtonDisabled: !valSaveButton,
     });
@@ -57,6 +58,43 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, this.validationFields);
+  };
+
+  onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      deck,
+    } = this.state;
+    const newCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: 'normal',
+      cardTrunfo: false,
+      // hasTrunfo: '',
+      isSaveButtonDisabled: true,
+      deck: [...deck, newCard],
+    });
   };
 
   render() {
@@ -87,7 +125,7 @@ class App extends React.Component {
           // hasTrunfo={}
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onInputChange={ this.onInputChange }
-          // onSaveButtonClick={ onSaveButtonClick }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
