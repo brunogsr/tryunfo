@@ -109,7 +109,20 @@ class App extends React.Component {
       cardTrunfo,
       // hasTrunfo,
       isSaveButtonDisabled,
+      deck,
     } = this.state;
+
+    const cartaSalva = deck.map((cardObj, index) => (<Card
+      key={ index }
+      cardName={ cardObj.cardName }
+      cardDescription={ cardObj.cardDescription }
+      cardAttr1={ cardObj.cardAttr1 }
+      cardAttr2={ cardObj.cardAttr2 }
+      cardAttr3={ cardObj.cardAttr3 }
+      cardImage={ cardObj.cardImage }
+      cardRare={ cardObj.cardRare }
+      cardTrunfo={ cardObj.cardTrunfo }
+    />));
     return (
       <div>
         <h1>Projeto Tryunfo</h1>
@@ -137,6 +150,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {cartaSalva}
       </div>
     );
   }
